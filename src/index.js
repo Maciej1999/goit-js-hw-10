@@ -64,5 +64,4 @@ const handleInput = async event => {
     removeCountry();
   }
 };
-
 input.addEventListener('input', debounce(handleInput, DEBOUNCE_DELAY));
