@@ -1,5 +1,5 @@
 import './css/styles.css';
-import debounce from 'lodash.debounce';
+import lodash from 'lodash';
 import { fetchCountries } from './js/fetchCountries.js';
 import Notiflix from 'notiflix';
 
@@ -64,4 +64,4 @@ const handleInput = async event => {
     removeCountry();
   }
 };
-input.addEventListener('input', debounce(handleInput, DEBOUNCE_DELAY));
+input.addEventListener('input', _.debounce(handleInput, DEBOUNCE_DELAY));
