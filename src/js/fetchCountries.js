@@ -1,7 +1,15 @@
-const BASE_URL = 'https://restcountries.com/v3.1';
-function fetchCountries(name) {
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const fetchCountries = name => {
   return fetch(
-    `${BASE_URL}/name/${name}?fields=name,capital,population,flags,languages`
-  );
-}
+    `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .catch(() => Notify.failure('Oops, there is no country with that name'));
+};
 export { fetchCountries };
